@@ -234,7 +234,7 @@ fi
 echo "[*] Copy Grafana"
 if [ -e $tmpdir/etc/grafana/grafana.ini ]
 then
-    cp -R $tmpdir/etc/grafana $tmpdir/etc/
+    cp -R $tmpdir/etc/grafana /etc/
 fi
 if [ -e $tmpdir/var/lib/grafana ]
 then

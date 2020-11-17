@@ -10,8 +10,8 @@ SRC_URI = " \
     file://zigbee2mqtt_confport \
 "
 
-SRC_URI[md5sum] = "0d63f83807e94f052eb46b5496fa5345"
-SRC_URI[sha256sum] = "6dfdeb097dd15c282c7857e8a86608d8b13b6827ec60d93ce63784558f50e6c3"
+SRC_URI[md5sum] = "263934c46f859f1e35ee6389483a9b5d"
+SRC_URI[sha256sum] = "5d7d1d6224293c119db9c56ba1469d012efa53da99768f49ac0560b915fb1c54"
 
 DEPENDS += " nodejs"
 RDEPENDS_${PN} += " nodejs mosquitto"
