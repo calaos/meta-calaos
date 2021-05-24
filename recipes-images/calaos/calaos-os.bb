@@ -15,7 +15,6 @@ IMAGE_INSTALL += "calaos-ddns"
 IMAGE_INSTALL += "influxd influx grafana"
 
 IMAGE_INSTALL += "lua-socket"
-IMAGE_INSTALL += "heyu"
 IMAGE_INSTALL += "linuxconsoletools"
 
 IMAGE_INSTALL += "evtest xev"

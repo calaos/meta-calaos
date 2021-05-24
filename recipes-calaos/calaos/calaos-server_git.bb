@@ -5,7 +5,7 @@ LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 DEPENDS += "libsigc++-2.0 owfs jansson luajit libusb ola knxd libuv curl sqlite3 mosquitto"
-RDEPENDS_${PN} += "heyu lua-socket ola knxd imagemagick curl mosquitto mosquitto-clients zigbee2mqtt"
+RDEPENDS_${PN} += "lua-socket ola knxd imagemagick curl mosquitto mosquitto-clients zigbee2mqtt"
 
 PE = "1"
 PV = "3.2-rc1+${PR}+git${SRCPV}"
