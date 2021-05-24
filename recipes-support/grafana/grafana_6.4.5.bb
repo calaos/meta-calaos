@@ -10,7 +10,7 @@ LIC_FILES_CHKSUM = "file://src/github.com/grafana/grafana/LICENSE;md5=31f6db4579
 
 DEPENDS += "go-native"
 
-inherit npm-base go systemd
+inherit npm go systemd
 
 SRC_URI += "\
 	file://grafana.service \
