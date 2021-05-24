@@ -10,12 +10,12 @@ DEPENDS = "luajit"
 
 SRC_URI = "git://github.com/diegonehab/luasocket.git"
 #           file://0001-allow-overrides-for-DESTDIR-CC_linux-LD_linux-LDFLAG.patch"
-SRCREV = "d1ec29be7f982db75864155dd61a058902e1cae2"
+SRCREV = "5b18e475f38fcf28429b1cc4b17baee3b9793a62"
 
 TARGET_CC_ARCH += "${LDFLAGS}"
 
-CFLAGS += "-I${STAGING_INCDIR}/luajit-2.0"
-EXTRA_OEMAKE = "PLAT=linux LUAINC_linux=${STAGING_INCDIR}/luajit-2.0 LUAPREFIX_linux=${prefix} DESTDIR=${D} LUAV=5.1 CC_linux='${CC}' LD_linux='${CC}'"
+CFLAGS += "-I${STAGING_INCDIR}/luajit-2.1"
+EXTRA_OEMAKE = "PLAT=linux LUAINC_linux=${STAGING_INCDIR}/luajit-2.1 LUAPREFIX_linux=${prefix} DESTDIR=${D} LUAV=5.1 CC_linux='${CC}' LD_linux='${CC}'"
 
 do_install() {
         oe_runmake install
