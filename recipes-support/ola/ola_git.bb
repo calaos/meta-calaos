@@ -6,10 +6,10 @@ LICENSE = "GPLv2 & LGPLv2.1"
 LIC_FILES_CHKSUM = "file://LICENCE;md5=7aa5f01584d845ad733abfa9f5cad2a1"
 
 DEPENDS = "libmicrohttpd avahi libusb1 libftdi cppunit protobuf protobuf-native ola-native bison-native flex-native"
-DEPENDS_class-native = "protobuf bison-native flex-native e2fsprogs-native"
+DEPENDS_class-native = "protobuf-native protobuf bison-native flex-native e2fsprogs-native"
 
-PV = "0.11.0-pre"
-SRCREV = "4d1d119233349d6347fa3a9f4c0095fd2b57384e"
+PV = "0.11.0-pre1"
+SRCREV = "c9add79a8d1c83ab209146006dae87906803b64f"
 SRC_URI = "git://github.com/OpenLightingProject/ola.git;protocol=https \
            file://olad.service \
            file://10-ola.rules \
@@ -17,7 +17,7 @@ SRC_URI = "git://github.com/OpenLightingProject/ola.git;protocol=https \
 
 S = "${WORKDIR}/git"
 
-inherit pkgconfig autotools-brokensep pythonnative systemd useradd
+inherit pkgconfig autotools-brokensep python3native systemd useradd
 
 #Olad does not run as root. we need to create a new user
 OLA_USER_HOME = "/etc/ola"
@@ -86,7 +86,7 @@ FILES_${PN} += "${datadir}/olad ${libdir}/olad/*.so.* \
 FILES_${PN}-staticdev += "${libdir}/olad/*.a"
 FILES_${PN}-dev += "${libdir}/olad/*.la ${libdir}/olad/*.so"
 
-BBCLASSEXTEND = "native nativesdk"
+BBCLASSEXTEND = "native"
 
 SYSTEMD_SERVICE_${PN} = "olad.service"
 #do not enable OLA daemon by default
