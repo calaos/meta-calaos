@@ -16,7 +16,7 @@ SRC_URI[sha256sum] = "5d7d1d6224293c119db9c56ba1469d012efa53da99768f49ac0560b915
 DEPENDS += " nodejs"
 RDEPENDS_${PN} += " nodejs mosquitto"
 
-inherit npm-install-global systemd
+inherit npm systemd
 
 do_install_append() {
     install -d ${D}${sysconfdir}
