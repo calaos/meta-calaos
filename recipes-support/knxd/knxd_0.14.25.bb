@@ -10,7 +10,7 @@ SRC_URI = "git://github.com/knxd/knxd.git;protocol=https;branch=master \
            "
 
 SRCREV = "7193c4ab247b17e9805c247cccb7edf61f72eb39"
-S = "${WORKDIR}/git/"
+S = "${WORKDIR}/git"
 
 inherit autotools-brokensep gettext pkgconfig systemd
 
