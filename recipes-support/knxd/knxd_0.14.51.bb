@@ -3,14 +3,13 @@ SECTION = "base"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=8264535c0c4e9c6c335635c4026a8022"
 
-SRC_URI = "git://github.com/knxd/knxd.git;protocol=https;branch=master \
+SRC_URI = "https://github.com/knxd/knxd/archive/refs/tags/${PV}.tar.gz \
            file://knxd.service \
            file://knxd.socket \
            file://knxd.conf \
            "
 
-SRCREV = "7193c4ab247b17e9805c247cccb7edf61f72eb39"
-S = "${WORKDIR}/git"
+SRC_URI[sha256sum] = "c8378bc6f671a5ab75edb51b23e839ee1adcdd00b372314ca9d2bdcd37fb70fb"
 
 inherit autotools-brokensep gettext pkgconfig systemd
 
@@ -34,8 +33,8 @@ do_install_append() {
 PACKAGES =+ " ${PN}-examples-dbg  ${PN}-examples"
 
 FILES_${PN}-examples += "${datadir}/knxd/examples \
-                         ${datadir}/knxd/eibclient.php \
-                         ${datadir}/knxd/EIB* \
+                         ${datadir}/eibclient.php \
+                         ${datadir}/EIB* \
                         "
 
 SYSTEMD_SERVICE_${PN} = "knxd.service knxd.socket"
