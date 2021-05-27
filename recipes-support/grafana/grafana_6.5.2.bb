@@ -56,7 +56,7 @@ do_install() {
     	${D}${datadir}/grafana/
 }
 
-INSANE_SKIP_${PN} = "ldflags already-stripped build-deps"
+INSANE_SKIP_${PN} = "ldflags already-stripped build-deps file-rdeps"
 
 SYSTEMD_SERVICE_${PN} = "\
     grafana.service \
