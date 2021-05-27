@@ -10,7 +10,7 @@ SRC_URI = "git://github.com/calaos/calaos_mobile.git;protocol=https;branch=maste
            file://calaos-home.service \
           "
 SRCREV = "e12bf4cd72be84aada7ca7c23252892c5b46478d"
-S = "${WORKDIR}/git/"
+S = "${WORKDIR}/git"
 
 inherit systemd
 
