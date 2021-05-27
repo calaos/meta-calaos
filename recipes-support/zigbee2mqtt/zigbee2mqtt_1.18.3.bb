@@ -510,8 +510,11 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=84dcc94da3adb52b53ae4fa38fe49e5d \
                     file://node_modules/zigbee2mqtt-frontend/package.json;md5=b2c39d11d78e885ed23bfd6d221fa122"
 
 SRC_URI = " \
-    https://github.com/Koenkk/zigbee2mqtt/archive/1.18.3.tar.gz \
+    https://github.com/Koenkk/zigbee2mqtt/archive/${PV}.tar.gz \
     npmsw://${THISDIR}/${BPN}/npm-shrinkwrap.json \
+    file://configuration.yaml \
+    file://zigbee2mqtt@.service \
+    file://zigbee2mqtt_confport \
     "
 SRC_URI[md5sum] = "8bd8e061c879956c2654ea097afa641c"
 SRC_URI[sha1sum] = "cf5c821eac173dacde8833aa6bb301649e0e9995"
@@ -519,7 +522,26 @@ SRC_URI[sha256sum] = "52718d37345a0f05ea1cb1b36552081c85a2477333507c6ed78d84cf66
 SRC_URI[sha384sum] = "d45ab9f431d96da40af89a40d27bdcc69c905f1206cb233aa150127dcbc733106f37b6f224d76460c8dff609051106e6"
 SRC_URI[sha512sum] = "c9925b87828d0e9753dd3c63c1a93acbfd80be0c87f52d1cf867eb27852647f09ec7a9a2971c5df8db29106125bdbe4eb000dd5c970394c730e6e102fe125b9e"
 
-inherit npm
+inherit npm systemd
+
+do_install_append() {
+    install -d ${D}${sysconfdir}
+    ln -sf /usr/lib/node_modules/zigbee2mqtt/data ${D}${sysconfdir}/zigbee2mqtt
+
+    install -m 0644 ${WORKDIR}/configuration.yaml ${D}/usr/lib/node_modules/zigbee2mqtt/data/configuration.yaml
+
+    install -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/zigbee2mqtt@.service ${D}${systemd_unitdir}/system
+
+    install -d ${D}${bindir}
+    install -m 0755 ${WORKDIR}/zigbee2mqtt_confport ${D}${bindir}
+
+    # ERROR: zigbee2mqtt-1.18.3-r0 do_package_qa: QA Issue: /usr/lib/node_modules/zigbee2mqtt/update.sh contained in package zigbee2mqtt requires /bin/bash, but no providers found in RDEP    ENDS_zigbee2mqtt? [file-rdeps]
+    rm -f ${D}/usr/lib/node_modules/zigbee2mqtt/update.sh
+}
+
+SYSTEMD_SERVICE_${PN} = "zigbee2mqtt@.service"
+SYSTEMD_AUTO_ENABLE_${PN} = "disable"
 
 LICENSE_${PN} = "GPLv3"
 LICENSE_${PN}-dabh-diagnostics = "MIT"
